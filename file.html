@@ -1,0 +1,32 @@
+<div id="content">
+  <!-- Initial content -->
+  <p>Item 1</p>
+  <p>Item 2</p>
+  <!-- ... more initial content ... -->
+</div>
+
+<script>
+const contentContainer = document.getElementById('content');
+let isLoading = false;
+
+window.addEventListener('scroll', function() {
+  if (!isLoading && isScrollingToBottom()) {
+    isLoading = true;
+    loadMoreContent();
+  }
+});
+
+function isScrollingToBottom() {
+  const scrollHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  return scrollHeight - scrollTop <= windowHeight;
+}
+
+function loadMoreContent() {
+  // Simulate fetching more content from a server or add predefined content
+  const newContent = '<p>New Item</p>';
+  contentContainer.innerHTML += newContent;
+  isLoading = false;
+}
+</script>
